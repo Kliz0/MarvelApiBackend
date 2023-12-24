@@ -1,5 +1,6 @@
 using BackEnd.Interfaces;
 using BackEnd.Models;
+using System.Text.Json.Nodes;
 
 public class MarvelApiService : IMarvelApiService
 {
@@ -9,9 +10,10 @@ public class MarvelApiService : IMarvelApiService
     private readonly string _apiUrl;
 
     private readonly Dictionary<string, List<int>> _userFavorites = new Dictionary<string, List<int>>();
-    public MarvelApiService(IHttpClientFactory httpClientFactory, IConfiguration configuration)
+
+    public MarvelApiService(IConfiguration configuration)
     {
-        _httpClient = httpClientFactory.CreateClient();
+        _httpClient = new HttpClient();
         _configuration = configuration;
         _apiKey = _configuration["MarvelApi:ApiKey"];
         _apiUrl = "https://gateway.marvel.com/v1/public/characters";

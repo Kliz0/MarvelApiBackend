@@ -1,9 +1,4 @@
-﻿using BackEnd.Models;
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-
-namespace BackEnd.Interfaces
+﻿namespace BackEnd.Interfaces
 {
     public interface IMarvelApiService
     {

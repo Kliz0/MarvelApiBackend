@@ -13,17 +13,17 @@ using System.Net.Http.Json;
 public class MarvelApiServiceTests
 {
     private MarvelApiService _marvelApiService;
-    private Mock<IHttpClientFactory> _httpClientMock;
+    private Mock<HttpClient> _httpClientMock;
     private Mock<IConfiguration> _configurationMock;
 
     [TestInitialize]
     public void Initialize()
     {
-        _httpClientMock = new Mock<IHttpClientFactory>();
+        _httpClientMock = new Mock<HttpClient>();
         _configurationMock = new Mock<IConfiguration>();
         _configurationMock.Setup(x => x["MarvelApi:ApiKey"]).Returns("your_api_key_here");
 
-        _marvelApiService = new MarvelApiService(_httpClientMock.Object, _configurationMock.Object);
+        _marvelApiService = new MarvelApiService(_configurationMock.Object);
     }
 
     [TestMethod]
@@ -56,11 +56,9 @@ public class MarvelApiServiceTests
     [TestMethod]
     public void ToggleFavorite_ShouldHandleMaxFavorites()
     {
-        // Arrange
         const int characterId = 1;
         const string userId = "testUser";
 
-        // Act
         for (int i = 0; i < 5; i++)
         {
             _marvelApiService.ToggleFavorite(characterId + i, userId);
@@ -68,7 +66,6 @@ public class MarvelApiServiceTests
 
         var result = _marvelApiService.ToggleFavorite(characterId + 5, userId);
 
-        // Assert
         Assert.IsFalse(result.IsFavorite);
         Assert.IsNotNull(result.Error);
     }

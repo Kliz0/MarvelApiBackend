@@ -39,5 +39,4 @@ namespace BackEnd.Interfaces
         public string Name { get; set; }
     }
 
-    // Verificar o que posso remover dessa interface.
 }

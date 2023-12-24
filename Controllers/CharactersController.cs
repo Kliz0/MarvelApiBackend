@@ -55,6 +55,4 @@ public class CharactersController : ControllerBase
             return BadRequest(new { message = ex.Message });
         }
     }
-
-    // Other controller actions...
 }
