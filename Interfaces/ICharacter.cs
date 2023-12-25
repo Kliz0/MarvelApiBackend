@@ -1,7 +1,4 @@
-﻿using static System.Net.Mime.MediaTypeNames;
-using System;
-
-namespace BackEnd.Interfaces
+﻿namespace BackEnd.Interfaces
 {
     public interface ICharacter
     {
@@ -20,10 +17,6 @@ namespace BackEnd.Interfaces
         public string Path { get; set; }
         public string Extension { get; set; }
 
-        public static implicit operator Image(string v)
-        {
-            throw new NotImplementedException();
-        }
     }
 
     public class ComicList

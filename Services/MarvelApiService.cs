@@ -1,6 +1,5 @@
 using BackEnd.Interfaces;
 using BackEnd.Models;
-using System.Text.Json.Nodes;
 
 public class MarvelApiService : IMarvelApiService
 {
