@@ -15,7 +15,7 @@ public class MarvelApiService : IMarvelApiService
         _httpClient = new HttpClient();
         _configuration = configuration;
         _apiKey = _configuration["MarvelApi:ApiKey"];
-        _apiUrl = "https://gateway.marvel.com/v1/public/characters";
+        _apiUrl = "https://gateway.marvel.com:443/v1/public/characters";
     }
 
     public async Task<(List<ICharacter> Characters, Exception Error)> GetCharacterNames()
